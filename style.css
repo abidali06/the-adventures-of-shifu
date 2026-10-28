@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: sans-serif;
+  background: #c9efff;
+}
+
+#game {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Simulate landscape when the phone is held upright. */
+@media (orientation: portrait) {
+  #game {
+    width: 100dvh;
+    height: 100vw;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+  }
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+#controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+#controls button {
+  width: 76px;
+  height: 76px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #ffbd59;
+  color: #543719;
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #d88b2e;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+#controls button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #d88b2e;
+}
+
+#score {
+  position: absolute;
+  top: max(20px, env(safe-area-inset-top));
+  left: 20px;
+  z-index: 1;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: white;
+  color: #27364b;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 3px 0 #b2d9e9;
+  pointer-events: none;
+}
+
+#timer {
+  position: absolute;
+  top: max(20px, env(safe-area-inset-top));
+  right: 20px;
+  z-index: 1;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: white;
+  color: #27364b;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 3px 0 #b2d9e9;
+  pointer-events: none;
+}
+
+#gameOver {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgb(25 45 70 / 55%);
+}
+
+#gameOver[hidden] {
+  display: none;
+}
+
+#gameOverPanel {
+  width: min(100%, 320px);
+  padding: 28px 20px;
+  border-radius: 24px;
+  background: white;
+  color: #27364b;
+  text-align: center;
+}
+
+#gameOverPanel h1 {
+  margin-top: 0;
+}
+
+#restartButton {
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 14px;
+  background: #ffbd59;
+  color: #543719;
+  font-size: 18px;
+  font-weight: bold;
+  touch-action: manipulation;
+}
+
+#pauseButton {
+  position: absolute;
+  top: 76px;
+  right: 20px;
+  z-index: 2;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+  color: #27364b;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 3px 0 #b2d9e9;
+  touch-action: manipulation;
+}
+
+#restartNowButton {
+  position: absolute;
+  top: 126px;
+  right: 20px;
+  z-index: 2;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+  color: #27364b;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 3px 0 #b2d9e9;
+  touch-action: manipulation;
+}
+
+#startScreen {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+  background: #c9efff;
+}
+
+#startScreen[hidden] {
+  display: none;
+}
+
+#startPanel {
+  width: min(100%, 380px);
+  padding: 32px 24px;
+
+  border: 4px solid white;
+  border-radius: 28px;
+  background: #ffffff;
+  color: #27364b;
+
+  text-align: center;
+  box-shadow: 0 8px 0 #b2d9e9;
+}
+
+#startPanel h1 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: clamp(26px, 4vw, 38px);
+}
+
+#startPanel p {
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+#playButton {
+  padding: 14px 32px;
+  border: 0;
+  border-radius: 16px;
+
+  background: #ffbd59;
+  color: #543719;
+
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #d88b2e;
+
+  touch-action: manipulation;
+}
+
+#playButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  box-shadow: none;
+}

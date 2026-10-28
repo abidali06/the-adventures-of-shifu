@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Adventures of Shifu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main id="game">
+      <div id="score">Candies: 0</div>
+      <div id="timer">Time: 30</div>
+      <button id="pauseButton" type="button">Pause</button>
+      <button id="restartNowButton" type="button">Restart</button>
+      <div id="startScreen">
+        <div id="startPanel">
+          <h1>Adventures of Shifu</h1>
+          <p>Catch as many candies as you can!</p>
+          <button id="playButton" type="button" disabled>Loading...</button>
+        </div>
+      </div>
+      <canvas id="gameCanvas"></canvas>
+
+      <div id="controls">
+        <button id="leftButton" aria-label="Move left">◀</button>
+        <button id="rightButton" aria-label="Move right">▶</button>
+      </div>
+      <div id="gameOver" hidden>
+        <div id="gameOverPanel">
+          <h1>Time's Up!</h1>
+          <p id="finalScore">You caught 0 candies!</p>
+          <button id="restartButton">Play Again</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
